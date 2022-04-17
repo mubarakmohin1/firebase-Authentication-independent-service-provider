@@ -4,6 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -56,6 +57,7 @@ const Login = () => {
                 </Button>
             </Form>
             <p>New visitors? <Link to={'/register'} className='text-danger pe-auto text-decoration-none' onClick={signUpNavigate}>Go to Registration.</Link></p>
+            <GoogleLogin></GoogleLogin>
         </div>
     );
 };
