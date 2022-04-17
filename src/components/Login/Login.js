@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
@@ -16,9 +16,10 @@ const Login = () => {
     const [
         signInWithEmailAndPassword,
         user,
-        
-        
-      ] = useSignInWithEmailAndPassword(auth);
+
+
+    ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
     const submitButton = event => {
         event.preventDefault();
@@ -29,37 +30,48 @@ const Login = () => {
     const signUpNavigate = event => {
         navigate('/register')
     }
-    if(user){
-        navigate(from, { replace: true });
+    const resetNavigate = async() => {
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email);
+        alert('Sent email');
     }
-    
-    return (
-        <div className='container w-50'>
-            <h2 className='text-center'>Please Login!</h2>
-            <Form onSubmit={submitButton}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+    if (user) {
+    navigate(from, { replace: true });
+}
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Login
-                </Button>
-            </Form>
-            <p>New visitors? <Link to={'/register'} className='text-danger pe-auto text-decoration-none' onClick={signUpNavigate}>Go to Registration.</Link></p>
-            <GoogleLogin></GoogleLogin>
-        </div>
-    );
+
+if (user) {
+    navigate(from, { replace: true });
+}
+
+ return (
+    <div className='container w-50'>
+        <h2 className='text-center'>Please Login!</h2>
+        <Form onSubmit={submitButton}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
+                <Form.Text className="text-muted">
+                    We'll never share your email with anyone else.
+                </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="Check me out" />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+                Login
+            </Button>
+        </Form>
+        <p>New visitors? <Link to={'/register'} className='text-danger pe-auto text-decoration-none' onClick={signUpNavigate}>Go to Registration.</Link></p>
+        <p>Forget password? <Link to={'/register'} className='text-danger pe-auto text-decoration-none' onClick={resetNavigate}>Reset password.</Link></p>
+        <GoogleLogin></GoogleLogin>
+    </div>
+);
 };
 
 export default Login;

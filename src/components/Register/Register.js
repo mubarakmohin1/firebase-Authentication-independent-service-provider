@@ -10,10 +10,8 @@ const Register = () => {
     
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-      ] =  useCreateUserWithEmailAndPassword(auth);
+        user
+      ] =  useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
  const navigate = useNavigate();
  const emailRef = useRef('');
  const passwordRef = useRef('');
