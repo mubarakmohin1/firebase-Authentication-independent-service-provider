@@ -45,7 +45,14 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+            <div>
+
             <Services></Services>
+
+            </div>
+            <div className='container'>
+                
+            </div>
         </div>
     );
 };
