@@ -5,7 +5,7 @@ import auth from '../../firebase.init';
 
 const GoogleLogin = () => {
     const navigate = useNavigate();
-    const [signInWithGoogle, user , error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, user, error] = useSignInWithGoogle(auth);
     let errorValue;
     if (error) {
 
@@ -16,7 +16,7 @@ const GoogleLogin = () => {
     }
     return (
         <div>
-            
+
             <div className='d-flex align-items-center'>
                 <div style={{ height: "2px" }} className='bg-primary w-50'></div>
                 <div className='ms-3 me-3'>or</div>
@@ -24,9 +24,9 @@ const GoogleLogin = () => {
             </div>
             {errorValue}
             <div>
-            <button onClick={() => signInWithGoogle()} className='btn btn-info text-white d-block mx-auto mt-2 w-50'>Google Sign In</button>
+                <button onClick={() => signInWithGoogle()} className='btn btn-info text-white d-block mx-auto mt-2 w-50'>Google Sign In</button>
             </div>
-          
+
         </div>
     );
 };

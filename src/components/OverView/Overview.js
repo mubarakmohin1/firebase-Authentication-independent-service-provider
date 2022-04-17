@@ -17,7 +17,7 @@ const Overview = () => {
         <div className='container ms-5 row'>
             <h2 className='text-center mt-2 mb-2'>Street CHildren Education</h2>
             {
-              overviews.map(overview => <SingleOverView key={overview.id} overview ={overview}></SingleOverView>)
+                overviews.map(overview => <SingleOverView key={overview.id} overview={overview}></SingleOverView>)
             }
         </div>
     );

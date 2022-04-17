@@ -48,8 +48,8 @@ const Home = () => {
             </Carousel>
             <div>
 
-            <Services></Services>
-            <Overview></Overview>
+                <Services></Services>
+                <Overview></Overview>
 
             </div>
             <div className='container'>
