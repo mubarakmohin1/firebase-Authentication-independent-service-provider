@@ -3,6 +3,7 @@ import { Carousel } from 'react-bootstrap';
 import sliding1 from '../../Images/sliding1.jpg'
 import sliding2 from '../../Images/sliding2.jpg'
 import sliding3 from '../../Images/sliding3.png'
+import Overview from '../OverView/Overview';
 import Services from '../Services/Services';
 
 const Home = () => {
@@ -48,10 +49,11 @@ const Home = () => {
             <div>
 
             <Services></Services>
+            <Overview></Overview>
 
             </div>
             <div className='container'>
-                
+
             </div>
         </div>
     );

@@ -10,6 +10,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import RequireAuth from './components/Login/RequireAuth/RequireAuth';
 import NotFound from './components/NotFound/NotFound';
+import Overview from './components/OverView/Overview';
 import Permission from './components/Permission/Permission';
 import Register from './components/Register/Register';
 import Services from './components/Services/Services';
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/services' element={<Services></Services>}></Route>
+        <Route path='/overview' element={<Overview></Overview>}></Route>
         <Route path ='/skill' element={<Skill></Skill>}></Route>
         <Route path='/checkout/:checkoutId' element={<CheckDetails></CheckDetails>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
